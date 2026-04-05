@@ -1520,3 +1520,63 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
   .btn-action { padding: 6px 8px; font-size: 0.65rem; }
   .hud-title { display: none; }
 }
+
+/* ============================================================
+   MOBILE EXPAND TOGGLES
+   ============================================================ */
+
+/* Show/hide helpers */
+.desktop-only { display: block; }
+.mobile-only  { display: none; }
+
+.mobile-toggles { display: none; }
+.mobile-expand  { display: none; }
+
+@media (max-width: 640px) {
+  .desktop-only { display: none !important; }
+  .mobile-only  { display: block; }
+
+  /* Toggle pill buttons */
+  .mobile-toggles {
+    display: flex;
+    gap: 6px;
+    padding: 4px 6px 0;
+    flex-shrink: 0;
+  }
+
+  .toggle-pill {
+    flex: 1;
+    padding: 5px 0;
+    border-radius: 20px;
+    border: 1px solid var(--panel-border);
+    background: var(--panel-bg);
+    color: var(--text-muted);
+    font-size: 0.65rem;
+    font-family: inherit;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.18s;
+    backdrop-filter: blur(6px);
+  }
+
+  .toggle-pill.active {
+    background: rgba(212,175,55,0.15);
+    border-color: var(--gold);
+    color: var(--gold-light);
+  }
+
+  /* Expanded panel area */
+  .mobile-expand {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 4px 6px 0;
+    flex-shrink: 0;
+  }
+
+  .mobile-expand > * {
+    flex: 1;
+    min-width: 0;
+  }
+}
