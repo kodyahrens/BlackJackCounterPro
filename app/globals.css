@@ -19,12 +19,25 @@
   --chip-white:  #e8e8e0;
   --chip-gold:   #d4af37;
 
-  --panel-bg:    rgba(10, 8, 6, 0.82);
+  --panel-bg:    rgba(10, 8, 6, 0.88);
   --panel-border:rgba(212, 175, 55, 0.3);
   --text:        #f0e8d0;
   --text-muted:  #a09070;
-  --radius:      12px;
-  --radius-sm:   8px;
+  --radius:      8px;
+  --radius-sm:   5px;
+
+  /* Compact scale — everything derived from this */
+  --fs-xs:   0.58rem;
+  --fs-sm:   0.68rem;
+  --fs-base: 0.75rem;
+  --fs-md:   0.82rem;
+  --fs-lg:   0.92rem;
+  --gap-xs:  3px;
+  --gap-sm:  5px;
+  --gap:     7px;
+  --pad-xs:  3px 7px;
+  --pad-sm:  5px 10px;
+  --pad:     7px 12px;
 }
 
 html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial Bold', Arial, sans-serif; }
@@ -61,7 +74,7 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
   height: 100%;
   color: var(--gold);
   gap: 16px;
-  font-size: 1.2rem;
+  font-size: var(--fs-md);
   background: #0a0604;
 }
 
@@ -91,7 +104,7 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 20px;
+  padding: 5px 10px;
   background: linear-gradient(180deg, rgba(0,0,0,0.75) 0%, transparent 100%);
   pointer-events: all;
 }
@@ -99,31 +112,30 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
 .hud-bankroll {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   background: var(--panel-bg);
   border: 1px solid var(--panel-border);
   border-radius: var(--radius);
-  padding: 6px 14px;
+  padding: 3px 8px;
 }
 
 .bankroll-chip-icon {
   color: var(--gold);
-  font-size: 1.1rem;
+  font-size: var(--fs-base);
   font-weight: bold;
 }
 
 .bankroll-value {
   color: var(--gold-light);
-  font-size: 1.2rem;
+  font-size: var(--fs-md);
   font-weight: bold;
-  letter-spacing: 0.5px;
 }
 
 .hud-title {
   color: var(--gold);
-  font-size: 1.3rem;
+  font-size: var(--fs-md);
   font-weight: bold;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-shadow: 0 2px 8px rgba(0,0,0,0.8);
   text-transform: uppercase;
 }
@@ -140,21 +152,21 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
 
 .dealer-value-pos {
   position: absolute;
-  top: 28%;
+  top: 22%;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .player-value-pos {
   position: absolute;
-  bottom: 148px;
+  bottom: 130px;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .split-value-pos {
   position: absolute;
-  bottom: 148px;
+  bottom: 130px;
 }
 .split-value-0 { left: 30%; transform: translateX(-50%); }
 .split-value-1 { left: 70%; transform: translateX(-50%); }
@@ -162,24 +174,24 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
 .hand-value-badge {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
   background: var(--panel-bg);
   border: 1px solid var(--panel-border);
   border-radius: var(--radius-sm);
-  padding: 4px 12px;
+  padding: 2px 8px;
   backdrop-filter: blur(4px);
 }
 
 .hand-value-label {
   color: var(--text-muted);
-  font-size: 0.8rem;
+  font-size: var(--fs-xs);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 .hand-value-number {
   color: var(--text);
-  font-size: 1.2rem;
+  font-size: var(--fs-lg);
   font-weight: bold;
 }
 
@@ -194,8 +206,8 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
 /* Count section */
 .count-section {
   position: absolute;
-  top: 64px;
-  right: 16px;
+  top: 36px;
+  right: 8px;
   pointer-events: all;
 }
 
@@ -208,9 +220,9 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 16px 16px;
-  gap: 12px;
-  background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 100%);
+  padding: 0 8px 8px;
+  gap: 5px;
+  background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, transparent 100%);
   pointer-events: all;
 }
 
@@ -221,8 +233,8 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
   background: var(--panel-bg);
   border: 1px solid var(--panel-border);
   border-radius: var(--radius);
-  padding: 12px 14px;
-  min-width: 200px;
+  padding: 6px 8px;
+  min-width: 148px;
   backdrop-filter: blur(8px);
 }
 
@@ -230,24 +242,24 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .count-title {
   color: var(--gold);
-  font-size: 0.75rem;
+  font-size: var(--fs-xs);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 .count-mode-tabs {
   display: flex;
-  gap: 3px;
+  gap: 2px;
 }
 
 .count-mode-tab {
-  padding: 2px 7px;
-  font-size: 0.65rem;
+  padding: 1px 4px;
+  font-size: var(--fs-xs);
   border-radius: 4px;
   border: 1px solid rgba(212,175,55,0.2);
   background: transparent;
@@ -266,9 +278,9 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
 
 .count-values {
   display: flex;
-  gap: 16px;
+  gap: 8px;
   justify-content: center;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .count-item {
@@ -280,13 +292,13 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
 
 .count-label {
   color: var(--text-muted);
-  font-size: 0.7rem;
+  font-size: var(--fs-xs);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
 }
 
 .count-number {
-  font-size: 1.6rem;
+  font-size: 0.82rem;
   font-weight: bold;
   font-variant-numeric: tabular-nums;
 }
@@ -303,12 +315,12 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
 
 .decks-remaining {
   color: var(--text-muted);
-  font-size: 0.68rem;
+  font-size: var(--fs-xs);
 }
 
 .count-display-toggle {
   color: var(--gold);
-  font-size: 0.68rem;
+  font-size: var(--fs-xs);
   background: none;
   border: none;
   cursor: pointer;
@@ -325,8 +337,10 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
   background: var(--panel-bg);
   border: 1px solid var(--panel-border);
   border-radius: var(--radius);
-  padding: 14px 18px;
-  min-width: 420px;
+  padding: 6px 10px;
+  min-width: 0;
+  width: 100%;
+  max-width: 360px;
   backdrop-filter: blur(8px);
 }
 
@@ -334,42 +348,42 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 6px;
 }
 
 .bankroll-label {
   color: var(--text-muted);
-  font-size: 0.8rem;
+  font-size: var(--fs-xs);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 .bankroll-amount {
   color: var(--gold-light);
-  font-size: 1.1rem;
+  font-size: var(--fs-md);
   font-weight: bold;
 }
 
 .chip-tray {
   display: flex;
-  gap: 8px;
+  gap: 5px;
   justify-content: center;
-  margin-bottom: 12px;
+  margin-bottom: 6px;
   flex-wrap: wrap;
 }
 
 /* Chip buttons */
 .chip-btn {
-  width: 56px;
-  height: 56px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  border: 3px solid;
+  border: 2px solid;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  font-size: 0.72rem;
+  font-size: var(--fs-xs);
   transition: transform 0.15s, box-shadow 0.15s;
   position: relative;
   text-shadow: 0 1px 2px rgba(0,0,0,0.7);
@@ -393,7 +407,7 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
   right: -6px;
   background: #fff;
   color: #111;
-  font-size: 0.62rem;
+  font-size: var(--fs-xs);
   font-weight: bold;
   width: 18px;
   height: 18px;
@@ -436,7 +450,7 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
 
 .bet-amount {
   color: var(--gold-light);
-  font-size: 1.5rem;
+  font-size: 1.0rem;
   font-weight: bold;
 }
 
@@ -467,11 +481,11 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
    BUTTONS
    ============================================================ */
 .btn {
-  padding: 10px 20px;
+  padding: 5px 12px;
   border-radius: var(--radius-sm);
   border: 1px solid transparent;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: var(--fs-sm);
   font-weight: bold;
   font-family: inherit;
   transition: all 0.15s;
@@ -509,28 +523,30 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
 .action-panel {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
   color: var(--text);
   align-items: center;
   background: var(--panel-bg);
   border: 1px solid var(--panel-border);
   border-radius: var(--radius);
-  padding: 14px 18px;
-  min-width: 420px;
+  padding: 6px 10px;
+  min-width: 0;
+  width: 100%;
+  max-width: 360px;
   backdrop-filter: blur(8px);
 }
 
 .action-row {
   display: flex;
-  gap: 10px;
+  gap: 4px;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 .btn-action {
-  padding: 12px 22px;
+  padding: 6px 12px;
   border-radius: var(--radius-sm);
-  font-size: 0.95rem;
+  font-size: var(--fs-sm);
   font-weight: bold;
   cursor: pointer;
   border: 1px solid;
@@ -588,12 +604,12 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
 }
 
 .btn-hint {
-  padding: 6px 14px;
-  border-radius: 6px;
+  padding: 3px 8px;
+  border-radius: 4px;
   background: rgba(212,175,55,0.1);
   border: 1px solid rgba(212,175,55,0.3);
   color: var(--gold);
-  font-size: 0.78rem;
+  font-size: var(--fs-xs);
   cursor: pointer;
   transition: all 0.15s;
   font-family: inherit;
@@ -610,7 +626,7 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
   border-radius: 6px;
   padding: 4px 12px;
   color: var(--gold-light);
-  font-size: 0.8rem;
+  font-size: var(--fs-xs);
 }
 
 .hint-badge strong { color: var(--gold); }
@@ -660,12 +676,14 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
   background: var(--panel-bg);
   border: 1px solid var(--panel-border);
   border-radius: var(--radius);
-  padding: 16px 24px;
-  min-width: 320px;
+  padding: 7px 14px;
+  min-width: 0;
+  width: 100%;
+  max-width: 360px;
   backdrop-filter: blur(8px);
 }
 
@@ -675,13 +693,13 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
   gap: 10px;
   padding: 10px 24px;
   border-radius: var(--radius-sm);
-  font-size: 1.4rem;
+  font-size: 0.9rem;
   font-weight: bold;
   letter-spacing: 1px;
 }
 
-.result-emoji { font-size: 1.6rem; }
-.result-label { text-transform: uppercase; letter-spacing: 2px; }
+.result-emoji { font-size: 1.0rem; }
+.result-label { text-transform: uppercase; letter-spacing: 1px; }
 
 .result-win       { color: #2ecc71; background: rgba(46,204,113,0.1); border: 1px solid rgba(46,204,113,0.3); animation: flash-win 0.6s ease; }
 .result-blackjack { color: var(--gold); background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.4); animation: flash-win 0.6s ease; }
@@ -722,9 +740,9 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
 }
 
 .next-hand-btn {
-  min-width: 160px;
-  padding: 12px 28px;
-  font-size: 1rem;
+  min-width: 100px;
+  padding: 6px 16px;
+  font-size: var(--fs-sm);
 }
 
 /* ============================================================
@@ -817,7 +835,7 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
   color: #e8dcc8;
   border-color: rgba(255,255,255,0.3);
   font-size: 0.92rem;
-  padding: 10px 22px;
+  padding: 5px 14px;
 }
 
 .insurance-prompt .btn-ghost:hover {
@@ -833,9 +851,9 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
   background: var(--panel-bg);
   border: 1px solid var(--panel-border);
   border-radius: var(--radius-sm);
-  padding: 6px 10px;
+  padding: 3px 7px;
   cursor: pointer;
-  font-size: 1.1rem;
+  font-size: var(--fs-md);
   transition: all 0.15s;
   color: var(--text);
 }
@@ -1015,10 +1033,10 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
   background: var(--panel-bg);
   border: 1px solid var(--panel-border);
   border-radius: var(--radius);
-  padding: 10px 14px;
-  min-width: 200px;
+  padding: 5px 8px;
+  min-width: 148px;
   backdrop-filter: blur(8px);
-  margin-bottom: 6px;
+  margin-bottom: 3px;
 }
 
 .shoe-header {
@@ -1030,9 +1048,9 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
 
 .shoe-title {
   color: var(--gold);
-  font-size: 0.75rem;
+  font-size: var(--fs-xs);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 .shoe-decks {
@@ -1152,11 +1170,11 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
 .shoe-guess-panel {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
   background: var(--panel-bg);
   border: 1px solid var(--panel-border);
   border-radius: var(--radius);
-  padding: 8px 16px;
+  padding: 5px 10px;
   backdrop-filter: blur(8px);
   flex-wrap: wrap;
   justify-content: center;
@@ -1164,9 +1182,9 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
 
 .shoe-guess-label {
   color: var(--gold);
-  font-size: 0.78rem;
+  font-size: var(--fs-xs);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
   white-space: nowrap;
 }
 
@@ -1235,7 +1253,7 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
 /* One-time banner shown until first user interaction unlocks audio */
 .music-unlock-banner {
   position: absolute;
-  top: 64px;
+  top: 36px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -1256,7 +1274,7 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
 
 .music-unlock-text {
   color: var(--gold-light);
-  font-size: 0.88rem;
+  font-size: var(--fs-sm);
   letter-spacing: 0.5px;
 }
 
@@ -1266,8 +1284,8 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
 }
 .music-widget {
   position: absolute;
-  bottom: 16px;
-  right: 16px;
+  bottom: 8px;
+  right: 8px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -1280,7 +1298,7 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
   display: flex;
   align-items: center;
   gap: 7px;
-  padding: 7px 14px;
+  padding: 3px 8px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--panel-border);
   background: var(--panel-bg);
@@ -1297,7 +1315,7 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
 
 .music-muted .music-icon  { opacity: 0.5; }
 .music-muted .music-label { color: var(--text-muted); font-size: 0.78rem; }
-.music-on   .music-label  { color: var(--gold-light); font-size: 0.78rem; }
+.music-on   .music-label  { color: var(--gold-light); font-size: var(--fs-xs); }
 
 .music-icon  { font-size: 1rem; line-height: 1; }
 
