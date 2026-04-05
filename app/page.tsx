@@ -2,8 +2,8 @@
 
 import dynamic from 'next/dynamic';
 import HUD from '@/components/HUD';
+import HandValueOverlay from '@/components/HandValueOverlay';
 
-// Load 3D scene client-side only (Three.js requires browser)
 const GameScene = dynamic(() => import('@/components/GameScene'), {
   ssr: false,
   loading: () => (
@@ -17,12 +17,14 @@ const GameScene = dynamic(() => import('@/components/GameScene'), {
 export default function Home() {
   return (
     <main className="game-root">
-      {/* 3D Canvas layer */}
+      {/* 3D Canvas */}
       <div className="scene-layer">
         <GameScene />
+        {/* Hand values float over the scene on ALL screen sizes */}
+        <HandValueOverlay />
       </div>
 
-      {/* HUD overlay layer */}
+      {/* HUD controls */}
       <div className="hud-layer">
         <HUD />
       </div>

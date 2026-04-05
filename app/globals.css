@@ -57,6 +57,7 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
   position: absolute;
   inset: 0;
   z-index: 0;
+  /* On mobile this becomes position:relative via media query */
 }
 
 .hud-layer {
@@ -143,11 +144,9 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
 /* Hand values */
 .hand-values {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   pointer-events: none;
+  z-index: 5;
 }
 
 .dealer-value-pos {
@@ -1368,4 +1367,156 @@ html, body { height: 100%; overflow: hidden; font-family: 'Arial Black', 'Arial 
   font-size: 0.72rem;
   min-width: 32px;
   text-align: right;
+}
+
+/* ============================================================
+   MOBILE LAYOUT  (≤ 640px)
+   The scene shrinks to the top 52% of the screen.
+   A fixed control strip sits below it — no more cut-off.
+   ============================================================ */
+@media (max-width: 640px) {
+
+  /* Switch from pure-overlay to stacked layout */
+  .game-root {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .scene-layer {
+    position: relative;
+    width: 100%;
+    height: 52svh;
+    flex-shrink: 0;
+    z-index: 0;
+  }
+
+  /* HUD becomes a normal flow element below the scene */
+  .hud-layer {
+    position: relative;
+    inset: auto;
+    height: 48svh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 10;
+    background: rgba(6,4,2,0.97);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .hud {
+    position: relative;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 4px 6px 8px;
+    gap: 4px;
+  }
+
+  /* Top bar inside hud is just a thin strip */
+  .hud-top {
+    position: relative;
+    padding: 3px 6px;
+    background: transparent;
+  }
+
+  /* Count section — inline in flow, not absolute */
+  .count-section {
+    position: relative;
+    top: auto;
+    right: auto;
+    display: flex;
+    gap: 4px;
+    justify-content: stretch;
+  }
+
+  .count-section > * { flex: 1; }
+  .count-display { margin-bottom: 0; }
+  .shoe-display  { margin-bottom: 0; }
+
+  /* Count + shoe side by side */
+  .count-section {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  /* Bottom action area — inline, not absolute */
+  .hud-bottom {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    background: transparent;
+    padding: 0;
+    gap: 4px;
+  }
+
+  /* Hand value badges — stay absolutely positioned over scene */
+  .hand-values {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .player-value-pos { bottom: 4px; }
+  .dealer-value-pos { top: 4px; }
+
+  /* Panels go full-width */
+  .betting-panel,
+  .action-panel,
+  .result-panel,
+  .shoe-guess-panel {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  /* Chip tray — bigger tap targets on mobile */
+  .chip-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 0.6rem;
+  }
+
+  /* Buttons — larger tap targets */
+  .btn-action {
+    padding: 8px 10px;
+    font-size: 0.7rem;
+    min-width: 52px;
+  }
+
+  .btn-deal {
+    padding: 8px 16px;
+    font-size: 0.72rem;
+  }
+
+  /* Split indicator */
+  .split-indicator { font-size: 0.62rem; }
+
+  /* Hide decorative hand value labels on very small screens */
+  .hand-value-label { display: none; }
+
+  /* Music widget anchored to scene layer */
+  .music-widget {
+    position: absolute;
+    bottom: 4px;
+    right: 6px;
+    z-index: 20;
+  }
+
+  /* Unlock banner */
+  .music-unlock-banner {
+    top: 10px;
+    padding: 4px 12px;
+    font-size: 0.65rem;
+  }
+}
+
+/* Extra small (iPhone SE etc.) */
+@media (max-width: 390px) {
+  .scene-layer  { height: 48svh; }
+  .hud-layer    { height: 52svh; }
+
+  .chip-btn { width: 38px; height: 38px; font-size: 0.55rem; }
+  .btn-action { padding: 6px 8px; font-size: 0.65rem; }
+  .hud-title { display: none; }
 }
